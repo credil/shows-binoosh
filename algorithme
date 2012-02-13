@@ -1,0 +1,27 @@
+#Time in seconds for refresh
+$waitTime = 1;
+
+$nextImageURL = determineNextImage();
+
+load $nextImageURL
+
+while(true)
+{
+	$whereShouldIBeURL
+	$whereShouldIBe
+
+	$whereShouldIBe = get($whereShouldIBeURL)
+
+	if($whereShouldIBe != window.location) {
+		window.location = $whereShouldIBe;
+	}
+	
+	sleep $waitTime;
+}
+
+
+function determineNextImage() {
+	#take the name of the current file
+	#Do string manipulation to determine next file
+	#return the url of the next location or the next image
+}
