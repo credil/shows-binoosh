@@ -8,7 +8,7 @@ var displayedUrl  = '';
 	window.setInterval(refresh, 500);
  });
 function refresh() {
-	$.get("http://localhost/chose-bin/fetchThis.txt", function(data){
+	$.get("http://localhost/shows-binoosh/fetchThis.txt", function(data){
 		var currentUrl = data;
 		if(currentUrl != displayedUrl) {
 			displayedUrl = currentUrl;
