@@ -1,0 +1,1 @@
+jquery.imagefit-0.2.js

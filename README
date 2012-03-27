@@ -1,11 +1,11 @@
 shows-binoosh is a very small program to remotely control a slide show presentation made up of png, jpgs or gifs.
 
-*Audience goes to URL and is presented to first slide.
-*AUdience listens to presenter via sepeate channel
-*Slide show controller clicks on php generated page to go to the next slide.
-*Audience client checks to see if server has updated current slide.  Logs in.
+1. Audience goes to URL and is presented to first slide.
+2. Audience listens to presenter via sepeate channel
+3. Slide show controller clicks on php generated page to go to the next slide.
+4. Audience client checks to see if server has updated current slide.  
 
 
-The audio or video is suppose to be listen via a seperate channel not supported by shows-binoosh.
+The audio or video is suppose to be listened via a seperate channel not supported by shows-binoosh.
 
 
