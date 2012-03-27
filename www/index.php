@@ -3,6 +3,7 @@
 <style>
 html, body {
 height: 100%;
+text-align: center; 
 }
 </style>
 <script type="text/javascript" src="js/jquery.js"></script>    
@@ -14,7 +15,7 @@ var displayedUrl  = '';
 	window.setInterval(refresh, 500);
  });
 $(window).load(function(){
-    $('#entier').imagefit();
+    $('body').imagefit();
 });
 function refresh() {
 	$.get("http://localhost/shows-binoosh/fetchThis.txt", function(data){
@@ -45,12 +46,10 @@ function output(string) {
  </script>      
 </head>
 <body>
-<div id="entier" width="100%" height="100%">
 <?php
 	$imagePath = file_get_contents('fetchThis.txt');
 	echo "<img src=\"$imagePath\" id=\"main\">";
 ?>
 <div id="feedback"></div>
-</div>
 </body>
 </html>
