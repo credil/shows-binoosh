@@ -2,7 +2,7 @@
 
 target='www/fetchThis.txt'
 
-sudo chown jlam:jlam $target 
+sudo chown $1:$1 $target 
 
 while(true); do
 	for file in www/slides/*; do 
