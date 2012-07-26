@@ -6,13 +6,21 @@ height: 100%;
 text-align: center; 
 }
 </style>
+<meta http-equiv="refresh" content="120">
 <script type="text/javascript" src="js/jquery.js"></script>    
 <script type="text/javascript" src="js/jquery.imagefit.js"></script>
+<script type="text/javascript" src="js/fullScreen.js"></script>
 <script type="text/javascript">                                         
 var displayedUrl  = '';
  $(document).ready(function() {
 	refresh();
 	window.setInterval(refresh, 500);
+
+	if (fullScreenApi.supportsFullScreen) {
+		fsElement = document.getElementById('slide');
+		fullScreenApi.requestFullScreen(fsElement);
+	}
+	
  });
 $(window).load(function(){
     $('body').imagefit();
@@ -23,9 +31,12 @@ function refresh() {
 		if(currentUrl != displayedUrl) {
 			displayedUrl = currentUrl;
 			$("#main").attr("src", displayedUrl);
+
+			$('body').imagefit();
 			
 		}
-		displayLastRefresh();
+		//Use for debug
+		//displayLastRefresh();
 	});
 }
 
@@ -43,13 +54,14 @@ function output(string) {
 }
 
 
+
  </script>      
 </head>
 <body>
 <?php
 	$imagePath = file_get_contents('fetchThis.txt');
-	echo "<img src=\"$imagePath\" id=\"main\">";
+	echo "<div id='slide'><img src=\"$imagePath\" id=\"main\"></div>";
 ?>
-<div id="feedback"></div>
+<!-- <div id="feedback"></div> -->
 </body>
 </html>

@@ -22,6 +22,18 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue(TRUE);
 	}
 
+
+	/**
+	public function testWritableFile() {
+		$path = $this->c->getPointerPath();
+                $fh = fopen($path, 'w'); 
+
+		$this->assertTrue($fh !== FALSE);
+                
+                fclose($fh);
+	}
+	*/
+
 	public function testListFiles() {
 		$l = $this->c->listFiles();
 		$t = array (
@@ -61,7 +73,7 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 
 	public function testPrintFiles() {
 		$s = $this->c->printFiles();
-		$e = '<a href="/shows-binoosh//controller/index.php?i=0">1.jpg</a><br />
+		$e = '1.jpg<br />
 <a href="/shows-binoosh//controller/index.php?i=1">2.jpg</a><br />
 <a href="/shows-binoosh//controller/index.php?i=2">3.jpg</a><br />
 <a href="/shows-binoosh//controller/index.php?i=3">4.jpg</a><br />
@@ -98,6 +110,46 @@ class ControllerTest extends PHPUnit_Framework_TestCase {
 		$result = $this->c->getPointerFile();
 		$expected = 'http://localhost/shows-binoosh/slides/4.jpg';
 		$this->assertEquals($expected, $result);
+		
+	}
+	
+	
+	public function testPrintFowardBackwardControls() {
+		$this->c->setPointerFileByIndex(2);
+		
+		$str = $this->c->printFowardBackwardControls();
+		
+		
+		#$expected = '<font size="+1"><a href="/shows-binoosh//controller/index.php?i=1">&lt;</a></font>'.
+		#	'&nbsp<font size="+3"><a href="/shows-binoosh//controller/index.php?i=3">></a></font>'
+		#;
+		
+		$expected = '<a href="/shows-binoosh//controller/index.php?i=1"><font size="+1">&lt;</font></a>&nbsp<a href="/shows-binoosh//controller/index.php?i=3"><font size="+7">&gt</font></a>'
+		;
+		
+		
+		$this->assertEquals($expected, $str);
+	}
+	
+	
+	public function testIllegalIndex() {
+		$this->c->setPointerFileByIndex(-1);
+		$i = $this->c->getCurrentIndex();
+		$this->assertEquals(0, $i);
+		
+		$this->c->setPointerFileByIndex('hello');
+		$i = $this->c->getCurrentIndex();
+		$this->assertEquals(0, $i);
+		
+	}
+	
+	
+	
+	public function testFileIsImage() {
+		$this->assertTrue(function_exists('finfo_open'));
+		
+		$this->assertTrue(function_exists('finfo_file'));
+		
 		
 	}
 

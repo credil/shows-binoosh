@@ -5,6 +5,8 @@ shows-binoosh is a very small program to remotely control a slide show presentat
 3. Slide show controller clicks on php generated page to go to the next slide.
 4. Audience client checks to see if server has updated current slide.  
 
+It is important to protect www/controller/ via .htaccess.  Otherwise, anyone can control your slide show.
+
 
 The audio or video is suppose to be listened via a seperate channel not supported by shows-binoosh.
 

@@ -20,26 +20,12 @@
 			        var browserwidth = $(window).width();
 			        var browserheight = $(window).height();
 				
+			        
 				var ratioWindow = browserheight/browserwidth;
-
-				/**
-			        //Resize image to proper ratio
-			        if ((browserheight/browserwidth) > ratio) {
-			            $(img).height(browserheight);
-			            $(img).width(browserheight / ratio);
-			            $(img).children().height(browserheight);
-			            $(img).children().width(browserheight / ratio);
-			        } else {
-			            $(img).width(browserwidth);
-			            $(img).height(browserwidth * ratio);
-			            $(img).children().width(browserwidth);
-			            $(img).children().height(browserwidth * ratio);
-			        }
-				*/
 				
 				if(ratioWindow < ratio) {
 					$(img)
-						.height('100%').each(function()
+						.height(browserheight).each(function()
 						{
 							$(this).width(Math.round(
 								$(this).attr('startwidth')*($(this).height()/$(this).attr('startheight')))
@@ -47,7 +33,7 @@
 						})
 				} else {
 					$(img)
-						.width('100%').each(function()
+						.width(browserwidth).each(function()
 						{
 							$(this).height(Math.round(
 								$(this).attr('startheight')*($(this).width()/$(this).attr('startwidth')))
